@@ -86,6 +86,18 @@ namespace TrouhelnikLib
             double expected = 14.63;
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void Test_AB_20_3_15_7()
+        {
+            //arrange small values
+            double x1 = 20; double y1 = 3; double x2 = 15; double y2 = 7;
+            double expected = 6.4;
+            double actual = Math.Sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+            actual = Math.Round(actual, 2);
+            Assert.AreEqual(expected, actual);
+        }
+
 //0
         [TestMethod]
         public void Test_If_Rectangular_()
