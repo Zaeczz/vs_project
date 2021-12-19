@@ -68,6 +68,7 @@ namespace Test
                 //Určuje pravoúhlý trojúhelník nebo ne
                 double Hypotinuse = Math.Max(AB, Math.Max(AC, BC));
 
+                //Zjisti ktera ze stran je hypotenze
                 double katet1 = 0;
                 double katet2 = 0;
                 if (AB != Hypotinuse) { katet1 = AB; }
@@ -78,6 +79,8 @@ namespace Test
                 }
                 if (BC != Hypotinuse) { katet2 = BC; }
 
+
+                // Kontroluje zda je trouhelnik pravouhly.
                 if ((katet1 * katet2) / 2 == Square)
                 {
                     Console.WriteLine("This triangle is rectangular");
