@@ -67,6 +67,8 @@ namespace Test
                 
                 double katet1 = 0;
                 double katet2 = 0;
+
+                //Kontroluje zda je trouhelnik pravouhly.
                 if (AB != Hypotinuse) { katet1 = AB; }
                 if (AC != Hypotinuse)
                 {
@@ -74,18 +76,15 @@ namespace Test
                     else katet2 = AC;
                 }
                 if (BC != Hypotinuse) { katet2 = BC; }
-
-
-                // Kontroluje zda je trouhelnik pravouhly.
                 if ((katet1 * katet2) / 2 == Square)
                 {
                     Console.WriteLine("This triangle is rectangular");
                 }
-
                 else //Vypíše, že trojúhelník není pravoúhlý
                 {
                     Console.WriteLine("This triangle is not rectangular");
                 }
+                
 
             }
             else
