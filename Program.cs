@@ -79,6 +79,8 @@ namespace Test
                 }
                 if (BC != Hypotinuse) { katet2 = BC; }
 
+
+                // Kontroluje zda je trouhelnik pravouhly.
                 if ((katet1 * katet2) / 2 == Square)
                 {
                     Console.WriteLine("This triangle is rectangular");
