@@ -68,6 +68,7 @@ namespace Test
                 //Určuje pravoúhlý trojúhelník nebo ne
                 double Hypotinuse = Math.Max(AB, Math.Max(AC, BC));
 
+                //Zjisti ktera ze stran je hypotenze
                 double katet1 = 0;
                 double katet2 = 0;
                 if (AB != Hypotinuse) { katet1 = AB; }
