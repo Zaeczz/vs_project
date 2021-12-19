@@ -21,12 +21,10 @@ namespace Test
             double y3 = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("_________________________________\n");
 
-
             //Určuje délky 3 stran pomocí Pythagorovy věty 
             double AB = Math.Sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
             double AC = Math.Sqrt((x1 - x3) * (x1 - x3) + (y1 - y3) * (y1 - y3));
             double BC = Math.Sqrt((x2 - x3) * (x2 - x3) + (y2 - y3) * (y2 - y3));
-
 
             //Zavádí dvě proměnné, které budou použity v dalších výpočtech 
             double Square = 0;
@@ -35,13 +33,10 @@ namespace Test
             if (AB + AC > BC && AC + BC > AB && BC + AB > AC)
             {
                 //Vypisuje souradnice trech pointu
-
                 Console.WriteLine("Triangle exist and has 3 points:\n");                            
-
                 Console.WriteLine($"Point A ({x1},{y1})");
                 Console.WriteLine($"Point B ({x2},{y2})");
                 Console.WriteLine($"Point C ({x3},{y3})");
-
                 Console.WriteLine("_________________________________\n");
 
                 //Výpočet obvodu trojúhelníku
@@ -56,12 +51,10 @@ namespace Test
                 Console.WriteLine($"Square is \t{Square}");
                 Console.WriteLine("_________________________________\n");
 
-
                  //Redukce desetinných míst na dvě
                 AB = Math.Round(AB, 2);
                 AC = Math.Round(AC, 2);
-                BC = Math.Round(BC, 2);
-                
+                BC = Math.Round(BC, 2);       
 
                 //Vypíše délku tří stran
                 Console.WriteLine($"AB side has \t{AB} points");
