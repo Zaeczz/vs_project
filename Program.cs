@@ -76,12 +76,14 @@ namespace Test
                     else katet2 = AC;
                 }
                 if (BC != Hypotinuse) { katet2 = BC; }
-                if ((katet1 * katet2) / 2 == Square)
+
+                //Vypíše, že trojúhelník není pravoúhlý
+                if ((katet1 * katet2) / 2 == Square) 
                 {
                     Console.WriteLine("This triangle is rectangular");
                 }
                 else //Vypíše, že trojúhelník není pravoúhlý
-                {
+                {    
                     Console.WriteLine("This triangle is not rectangular");
                 }
                 
