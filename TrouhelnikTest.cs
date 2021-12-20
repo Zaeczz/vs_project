@@ -9,7 +9,7 @@ namespace TrouhelnikLib
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using TrouhelnikLib;
-
+    /// cscscsc
     /// <summary>
     /// The class checks the correctness of the solution with my values
     /// </summary>
