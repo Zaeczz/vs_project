@@ -21,7 +21,7 @@ namespace Test
             bool isExist = false;
             if (ab + ac >= bc && ac + bc >= ab && bc + ab >= ac)
             {
-                IsExist = true;
+                isExist = true;
             }
 
             return isExist;
@@ -74,11 +74,13 @@ namespace Test
             }
             else
             {
-                isRectangular = false;                
+                isRectangular = false;
+            }
 
 
             return isRectangular;
         }
+
 
         /// <summary>
         /// Uses the above methods. Requires the user to specify the coordinates of the points. Outputs the response.
@@ -224,7 +226,7 @@ namespace Test
             else
             {
                 Console.WriteLine("Triangle doesn't exist");
-            }            
+            }
 
             Console.ReadLine();
         }
