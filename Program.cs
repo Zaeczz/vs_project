@@ -14,7 +14,74 @@ namespace Test
     public class Program
     {
         /// <summary>
-        /// Fulfills all requirements for a triangle project
+        /// Determines whether a triangle exists
+        /// </summary>
+        public static bool Existing(double ab, double ac, double bc)
+        {
+            bool isExist = false;
+            if (ab + ac >= bc && ac + bc >= ab && bc + ab >= ac)
+            {
+                IsExist = true;
+            }
+
+            return isExist;
+        }
+
+        /// <summary>
+        /// Determines whether the triangle is rectangular
+        /// </summary>
+        public static bool Rectangular(double ab, double ac, double bc)
+        {
+            bool isRectangular = false;
+
+            // Vypočítá délku nejdelší strany
+            double hypotinuse = Math.Max(ab, Math.Max(ac, bc));
+
+            // Výpočet plochy trojúhelníku
+            double square;
+            double s = (ab + ac + bc) / 2;
+            square = Math.Sqrt(s * (s - ab) * (s - ac) * (s - bc));
+            square = Math.Round(square, 2);
+
+            // Určuje pravoúhlý trojúhelník nebo ne
+            double katet1 = 0;
+            double katet2 = 0;
+            if (ab != hypotinuse)
+            {
+                katet1 = ab;
+            }
+
+            if (ac != hypotinuse)
+            {
+                if (katet1 == 0)
+                {
+                    katet1 = ac;
+                }
+                else
+                {
+                    katet2 = ac;
+                }
+            }
+
+            if (bc != hypotinuse)
+            {
+                katet2 = bc;
+            }
+
+            if ((katet1 * katet2) / 2 == square)
+            {
+                isRectangular = true;
+            }
+            else
+            {
+                isRectangular = false;                
+
+
+            return isRectangular;
+        }
+
+        /// <summary>
+        /// Uses the above methods. Requires the user to specify the coordinates of the points. Outputs the response.
         /// </summary>
         public static void Main()
         {
@@ -27,11 +94,11 @@ namespace Test
             Console.Write($"Enter x for point of triangle A: ");
             string temp1 = Console.ReadLine();
             bool isParsable = double.TryParse(temp1, out number);
-            if (isParsable) 
-            {  
+            if (isParsable)
+            {
                 x1 = double.Parse(temp1);
-            }            
-            else 
+            }
+            else
             {
                 Console.WriteLine("Please enter the correct number");
                 Main();
@@ -40,11 +107,11 @@ namespace Test
             Console.Write($"Enter y for point of triangle A: ");
             string temp2 = Console.ReadLine();
             isParsable = double.TryParse(temp2, out number);
-            if (isParsable) 
-            { 
-                y1 = double.Parse(temp2); 
+            if (isParsable)
+            {
+                y1 = double.Parse(temp2);
             }
-            else 
+            else
             {
                 Console.WriteLine("Please enter the correct number");
                 Main();
@@ -52,36 +119,36 @@ namespace Test
 
             Console.Write($"Enter x for point of triangle B: ");
             string temp3 = Console.ReadLine();
-             isParsable = double.TryParse(temp3, out number);
+            isParsable = double.TryParse(temp3, out number);
             if (isParsable)
-            {  
+            {
                 x2 = double.Parse(temp3);
             }
             else
-            { 
+            {
                 Console.WriteLine("Please enter the correct number");
-                Main(); 
+                Main();
             }
 
             Console.Write($"Enter y for point of triangle B: ");
             string temp4 = Console.ReadLine();
             isParsable = double.TryParse(temp4, out number);
             if (isParsable)
-            { 
-                y2 = double.Parse(temp4); 
+            {
+                y2 = double.Parse(temp4);
             }
-            else 
-            { 
+            else
+            {
                 Console.WriteLine("Please enter the correct number");
                 Main();
             }
 
             Console.Write($"Enter x for point of triangle C: ");
             string temp5 = Console.ReadLine();
-             isParsable = double.TryParse(temp5, out number);
+            isParsable = double.TryParse(temp5, out number);
             if (isParsable)
-            {  
-                y3 = double.Parse(temp5);
+            {
+                x3 = double.Parse(temp5);
             }
             else
             {
@@ -91,10 +158,10 @@ namespace Test
 
             Console.Write($"Enter y for point of triangle C: ");
             string temp6 = Console.ReadLine();
-             isParsable = double.TryParse(temp6, out number);
+            isParsable = double.TryParse(temp6, out number);
             if (isParsable)
             {
-                y3 = double.Parse(temp6); 
+                y3 = double.Parse(temp6);
             }
             else
             {
@@ -110,10 +177,10 @@ namespace Test
             double bc = Math.Sqrt(((x2 - x3) * (x2 - x3)) + ((y2 - y3) * (y2 - y3)));
 
             // Zavádí dvě proměnné, které budou použity v dalších výpočtech 
-            double square;            
+            double square;
             double perimetr;
 
-            if (ab + ac > bc && ac + bc > ab && bc + ab > ac)
+            if (Existing(ab, ac, bc))
             {
                 // Vypisuje souradnice trech pointu
                 Console.WriteLine("Triangle exist and has 3 points:\n");
@@ -145,38 +212,10 @@ namespace Test
                 Console.WriteLine($"BC side has \t{bc} points");
                 Console.WriteLine("_________________________________\n");
 
-                // Vypočítá délku nejdelší strany
-                double hypotinuse = Math.Max(ab, Math.Max(ac, bc));
-
-                // Určuje pravoúhlý trojúhelník nebo ne
-                double katet1 = 0;
-                double katet2 = 0;
-                if (ab != hypotinuse) 
-                { 
-                    katet1 = ab; 
-                }
-
-                if (ac != hypotinuse)
-                {
-                    if (katet1 == 0) 
-                    {
-                        katet1 = ac; 
-                    }
-                    else
-                    {
-                        katet2 = ac;
-                    }
-                }
-
-                if (bc != hypotinuse) 
-                { 
-                    katet2 = bc; 
-                }
-
-                if ((katet1 * katet2) / 2 == square)
+                if (Rectangular(ab, ac, bc))
                 {
                     Console.WriteLine("This triangle is rectangular");
-                }                
+                }
                 else
                 {
                     Console.WriteLine("This triangle is not rectangular");
@@ -185,7 +224,7 @@ namespace Test
             else
             {
                 Console.WriteLine("Triangle doesn't exist");
-            }
+            }            
 
             Console.ReadLine();
         }
