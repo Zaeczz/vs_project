@@ -137,3 +137,96 @@ namespace Test
             {
                 y2 = double.Parse(temp4);
             }
+            else
+            {
+                Console.WriteLine("Please enter the correct number");
+                Main();
+            }
+
+            Console.Write($"Enter x for point of triangle C: ");
+            string temp5 = Console.ReadLine();
+            isParsable = double.TryParse(temp5, out number);
+            if (isParsable)
+            {
+                x3 = double.Parse(temp5);
+            }
+            else
+            {
+                Console.WriteLine("Please enter the correct number");
+                Main();
+            }
+
+            Console.Write($"Enter y for point of triangle C: ");
+            string temp6 = Console.ReadLine();
+            isParsable = double.TryParse(temp6, out number);
+            if (isParsable)
+            {
+                y3 = double.Parse(temp6);
+            }
+            else
+            {
+                Console.WriteLine("Please enter the correct number");
+                Main();
+            }
+
+            Console.WriteLine("_________________________________\n");
+
+            // Určuje délky 3 stran pomocí Pythagorovy věty 
+            double ab = Math.Sqrt(((x1 - x2) * (x1 - x2)) + ((y1 - y2) * (y1 - y2)));
+            double ac = Math.Sqrt(((x1 - x3) * (x1 - x3)) + ((y1 - y3) * (y1 - y3)));
+            double bc = Math.Sqrt(((x2 - x3) * (x2 - x3)) + ((y2 - y3) * (y2 - y3)));
+
+            // Zavádí dvě proměnné, které budou použity v dalších výpočtech 
+            double square;
+            double perimetr;
+
+            if (Existing(ab, ac, bc))
+            {
+                // Vypisuje souradnice trech pointu
+                Console.WriteLine("Triangle exist and has 3 points:\n");
+                Console.WriteLine($"Point A ({x1},{y1})");
+                Console.WriteLine($"Point B ({x2},{y2})");
+                Console.WriteLine($"Point C ({x3},{y3})");
+                Console.WriteLine("_________________________________\n");
+
+                // Výpočet obvodu trojúhelníku
+                perimetr = ab + ac + bc;
+                perimetr = Math.Round(perimetr, 2);
+                Console.WriteLine($"Perimeter is\t{perimetr}");
+
+                // Výpočet plochy trojúhelníku
+                double s = (ab + ac + bc) / 2;
+                square = Math.Sqrt(s * (s - ab) * (s - ac) * (s - bc));
+                square = Math.Round(square, 2);
+                Console.WriteLine($"Square is \t{square}");
+                Console.WriteLine("_________________________________\n");
+
+                // Redukce desetinných míst na dvě
+                ab = Math.Round(ab, 2);
+                ac = Math.Round(ac, 2);
+                bc = Math.Round(bc, 2);
+
+                // Vypíše délku tří stran
+                Console.WriteLine($"AB side has \t{ab} points");
+                Console.WriteLine($"AC side has \t{ac} points");
+                Console.WriteLine($"BC side has \t{bc} points");
+                Console.WriteLine("_________________________________\n");
+
+                if (Rectangular(ab, ac, bc))
+                {
+                    Console.WriteLine("This triangle is rectangular");
+                }
+                else
+                {
+                    Console.WriteLine("This triangle is not rectangular");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Triangle doesn't exist");
+            }            
+
+            Console.ReadLine();
+        }
+    }
+}
