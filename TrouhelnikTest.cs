@@ -8,7 +8,7 @@ namespace TrouhelnikLib
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using TrouhelnikLib;
+    using Test;
 
     /// <summary>
     /// The class checks the correctness of the solution with my values
@@ -39,20 +39,8 @@ namespace TrouhelnikLib
         [TestMethod()]
         public void ExistingTest_True()
         {
-            double ab = 5;
-            double ac = 10;
-            double bc = 11.18;
-            bool expected = true;
-            bool isExist = false;
-            if (ab + ac >= bc && ac + bc >= ab && bc + ab >= ac)
-            {
-                isExist = true;
-            }
-            else
-            {
-                isExist = false;
-            }
-            Assert.IsTrue(expected == isExist);
+            bool isExist = Program.Existing(5, 10, 11.18);
+            Assert.IsTrue(isExist);
         }
 
         /// <summary>
@@ -61,20 +49,8 @@ namespace TrouhelnikLib
         [TestMethod()]
         public void ExistingTest_false()
         {
-            double ab = 0;
-            double ac = 0;
-            double bc = 0;
-            bool expected = false;
-            bool isExist = false;
-            if (ab + ac >= bc && ac + bc >= ab && bc + ab >= ac)
-            {
-                isExist = true;
-            }
-            else
-            {
-                isExist = false;
-            }
-            Assert.IsTrue(expected == isExist);
+            bool isExist = Program.Existing(0, 0, 0);
+            Assert.IsTrue(!isExist);
         }
 
         /// <summary>
@@ -83,54 +59,8 @@ namespace TrouhelnikLib
         [TestMethod()]
         public void RectagularTest_True()
         {
-            double ab = 5;
-            double ac = 10;
-            double bc = 11.18;
-            bool isRectangular = false;
-            bool expected = true;
-            // Vypočítá délku nejdelší strany
-            double hypotinuse = Math.Max(ab, Math.Max(ac, bc));
-
-            // Výpočet plochy trojúhelníku
-            double square;
-            double s = (ab + ac + bc) / 2;
-            square = Math.Sqrt(s * (s - ab) * (s - ac) * (s - bc));
-            square = Math.Round(square, 2);
-
-            // Určuje pravoúhlý trojúhelník nebo ne
-            double katet1 = 0;
-            double katet2 = 0;
-            if (ab != hypotinuse)
-            {
-                katet1 = ab;
-            }
-
-            if (ac != hypotinuse)
-            {
-                if (katet1 == 0)
-                {
-                    katet1 = ac;
-                }
-                else
-                {
-                    katet2 = ac;
-                }
-            }
-
-            if (bc != hypotinuse)
-            {
-                katet2 = bc;
-            }
-
-            if ((katet1 * katet2) / 2 == square)
-            {
-                isRectangular = true;
-            }
-            else
-            {
-                isRectangular = false;
-            }
-            Assert.IsTrue(expected == isRectangular);
+            bool isRectangular = Program.Rectangular(5, 10, 11.18);
+            Assert.IsTrue(isRectangular);
         }
 
         /// <summary>
@@ -139,54 +69,8 @@ namespace TrouhelnikLib
         [TestMethod()]
         public void RectagularTest_false()
         {
-            double ab = 5;
-            double ac = 12.21;
-            double bc = 10.2;
-            bool isRectangular = false;
-            bool expected = true;
-            // Vypočítá délku nejdelší strany
-            double hypotinuse = Math.Max(ab, Math.Max(ac, bc));
-
-            // Výpočet plochy trojúhelníku
-            double square;
-            double s = (ab + ac + bc) / 2;
-            square = Math.Sqrt(s * (s - ab) * (s - ac) * (s - bc));
-            square = Math.Round(square, 2);
-
-            // Určuje pravoúhlý trojúhelník nebo ne
-            double katet1 = 0;
-            double katet2 = 0;
-            if (ab != hypotinuse)
-            {
-                katet1 = ab;
-            }
-
-            if (ac != hypotinuse)
-            {
-                if (katet1 == 0)
-                {
-                    katet1 = ac;
-                }
-                else
-                {
-                    katet2 = ac;
-                }
-            }
-
-            if (bc != hypotinuse)
-            {
-                katet2 = bc;
-            }
-
-            if ((katet1 * katet2) / 2 == square)
-            {
-                isRectangular = true;
-            }
-            else
-            {
-                isRectangular = false;
-            }
-            Assert.IsTrue(expected == isRectangular);
+            bool isRectangular = Program.Rectangular(5, 12.21, 10.2);
+            Assert.IsTrue(!isRectangular);
         }
 
         /// <summary>

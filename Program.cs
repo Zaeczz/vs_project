@@ -19,7 +19,7 @@ namespace Test
         public static bool Existing(double ab, double ac, double bc)
         {
             bool isExist = false;
-            if (ab + ac >= bc && ac + bc >= ab && bc + ab >= ac)
+            if (ab + ac >= bc && ac + bc >= ab && bc + ab >= ac && ab != 0 && bc != 0 && ac != 0)
             {
                 isExist = true;
             }
