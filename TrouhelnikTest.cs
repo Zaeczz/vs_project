@@ -33,7 +33,7 @@ namespace TrouhelnikLib
             Assert.AreEqual(expected, actual);
         }
 
-        /// <summary>
+        /// <summay>
         /// Test if the triangle exist with positive answer
         /// </summary>
         [TestMethod()]
