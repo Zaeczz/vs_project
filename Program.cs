@@ -1,105 +1,192 @@
-using System;
+//-----------------------------------------------------------------------
+// <copyright file="Program.cs" company="Pupa-i-Lupa-i-Pupa">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
+
 namespace Test
 {
-    class Program
+    using System;
+
+    /// <summary>
+    /// Fulfills all requirements for a triangle project
+    /// </summary>
+    public class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Fulfills all requirements for a triangle project
+        /// </summary>
+        public static void Main()
         {
-            //Testing Marks
-            //Program žádá uživatele o zadání souřadnic bodu
+            // Testing Marks
+            double number;
+
+            // Program žádá uživatele o zadání souřadnic bodu a testuje jestli jich napsal spravne
+            double x1 = 0, x2 = 0, x3 = 0, y1 = 0, y2 = 0, y3 = 0;
+
             Console.Write($"Enter x for point of triangle A: ");
-            double x1 = Convert.ToDouble(Console.ReadLine());
+            string temp1 = Console.ReadLine();
+            bool isParsable = double.TryParse(temp1, out number);
+            if (isParsable)
+            {
+                x1 = double.Parse(temp1);
+            }
+            else
+            {
+                Console.WriteLine("Please enter the correct number");
+                Main();
+            }
+
             Console.Write($"Enter y for point of triangle A: ");
-            double y1 = Convert.ToDouble(Console.ReadLine());
+            string temp2 = Console.ReadLine();
+            isParsable = double.TryParse(temp2, out number);
+            if (isParsable)
+            {
+                y1 = double.Parse(temp2);
+            }
+            else
+            {
+                Console.WriteLine("Please enter the correct number");
+                Main();
+            }
+
             Console.Write($"Enter x for point of triangle B: ");
-            double x2 = Convert.ToDouble(Console.ReadLine());
+            string temp3 = Console.ReadLine();
+            isParsable = double.TryParse(temp3, out number);
+            if (isParsable)
+            {
+                x2 = double.Parse(temp3);
+            }
+            else
+            {
+                Console.WriteLine("Please enter the correct number");
+                Main();
+            }
+
             Console.Write($"Enter y for point of triangle B: ");
-            double y2 = Convert.ToDouble(Console.ReadLine());
+            string temp4 = Console.ReadLine();
+            isParsable = double.TryParse(temp4, out number);
+            if (isParsable)
+            {
+                y2 = double.Parse(temp4);
+            }
+            else
+            {
+                Console.WriteLine("Please enter the correct number");
+                Main();
+            }
+
             Console.Write($"Enter x for point of triangle C: ");
-            double x3 = Convert.ToDouble(Console.ReadLine());
+            string temp5 = Console.ReadLine();
+            isParsable = double.TryParse(temp5, out number);
+            if (isParsable)
+            {
+                y3 = double.Parse(temp5);
+            }
+            else
+            {
+                Console.WriteLine("Please enter the correct number");
+                Main();
+            }
+
             Console.Write($"Enter y for point of triangle C: ");
-            double y3 = Convert.ToDouble(Console.ReadLine());
+            string temp6 = Console.ReadLine();
+            isParsable = double.TryParse(temp6, out number);
+            if (isParsable)
+            {
+                y3 = double.Parse(temp6);
+            }
+            else
+            {
+                Console.WriteLine("Please enter the correct number");
+                Main();
+            }
+
             Console.WriteLine("_________________________________\n");
 
+            // Určuje délky 3 stran pomocí Pythagorovy věty 
+            double ab = Math.Sqrt(((x1 - x2) * (x1 - x2)) + ((y1 - y2) * (y1 - y2)));
+            double ac = Math.Sqrt(((x1 - x3) * (x1 - x3)) + ((y1 - y3) * (y1 - y3)));
+            double bc = Math.Sqrt(((x2 - x3) * (x2 - x3)) + ((y2 - y3) * (y2 - y3)));
 
-            //Určuje délky 3 stran pomocí Pythagorovy věty 
-            double AB = Math.Sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
-            double AC = Math.Sqrt((x1 - x3) * (x1 - x3) + (y1 - y3) * (y1 - y3));
-            double BC = Math.Sqrt((x2 - x3) * (x2 - x3) + (y2 - y3) * (y2 - y3));
+            // Zavádí dvě proměnné, které budou použity v dalších výpočtech 
+            double square;
+            double perimetr;
 
-
-            //Zavádí dvě proměnné, které budou použity v dalších výpočtech 
-            double Square = 0;
-            double Perimetr;
-
-            if (AB + AC > BC && AC + BC > AB && BC + AB > AC)
+            if (ab + ac > bc && ac + bc > ab && bc + ab > ac)
             {
-                //Vypisuje souradnice trech pointu
-
-                Console.WriteLine("Triangle exist and has 3 points:\n");                            
-
+                // Vypisuje souradnice trech pointu
+                Console.WriteLine("Triangle exist and has 3 points:\n");
                 Console.WriteLine($"Point A ({x1},{y1})");
                 Console.WriteLine($"Point B ({x2},{y2})");
                 Console.WriteLine($"Point C ({x3},{y3})");
-
                 Console.WriteLine("_________________________________\n");
 
-                //Výpočet obvodu trojúhelníku
-                Perimetr = (AB + AC + BC);
-                Perimetr = Math.Round(Perimetr, 2);
-                Console.WriteLine($"Perimeter is\t{Perimetr}");
+                // Výpočet obvodu trojúhelníku
+                perimetr = ab + ac + bc;
+                perimetr = Math.Round(perimetr, 2);
+                Console.WriteLine($"Perimeter is\t{perimetr}");
 
-                //Výpočet plochy trojúhelníku
-                double s = (AB + AC + BC) / 2;
-                Square = Math.Sqrt(s * (s - AB) * (s - AC) * (s - BC));
-                Square = Math.Round(Square, 2);
-                Console.WriteLine($"Square is \t{Square}");
+                // Výpočet plochy trojúhelníku
+                double s = (ab + ac + bc) / 2;
+                square = Math.Sqrt(s * (s - ab) * (s - ac) * (s - bc));
+                square = Math.Round(square, 2);
+                Console.WriteLine($"Square is \t{square}");
                 Console.WriteLine("_________________________________\n");
 
+                // Redukce desetinných míst na dvě
+                ab = Math.Round(ab, 2);
+                ac = Math.Round(ac, 2);
+                bc = Math.Round(bc, 2);
 
-                 //Redukce desetinných míst na dvě
-                AB = Math.Round(AB, 2);
-                AC = Math.Round(AC, 2);
-                BC = Math.Round(BC, 2);
-                
-
-                //Vypíše délku tří stran
-                Console.WriteLine($"AB side has \t{AB} points");
-                Console.WriteLine($"AC side has \t{AC} points");
-                Console.WriteLine($"BC side has \t{BC} points");
+                // Vypíše délku tří stran
+                Console.WriteLine($"AB side has \t{ab} points");
+                Console.WriteLine($"AC side has \t{ac} points");
+                Console.WriteLine($"BC side has \t{bc} points");
                 Console.WriteLine("_________________________________\n");
 
-                //Vypočítá délku nejdelší strany
-                double Hypotinuse = Math.Max(AB, Math.Max(AC, BC));
-                
-                //Určuje pravoúhlý trojúhelník nebo ne
-                double Hypotinuse = Math.Max(AB, Math.Max(AC, BC));
+                // Vypočítá délku nejdelší strany
+                double hypotinuse = Math.Max(ab, Math.Max(ac, bc));
 
+                // Určuje pravoúhlý trojúhelník nebo ne
                 double katet1 = 0;
                 double katet2 = 0;
-                if (AB != Hypotinuse) { katet1 = AB; }
-                if (AC != Hypotinuse)
+                if (ab != hypotinuse)
                 {
-                    if (katet1 == 0) katet1 = AC;
-                    else katet2 = AC;
+                    katet1 = ab;
                 }
-                if (BC != Hypotinuse) { katet2 = BC; }
 
-                if ((katet1 * katet2) / 2 == Square)
+                if (ac != hypotinuse)
+                {
+                    if (katet1 == 0)
+                    {
+                        katet1 = ac;
+                    }
+                    else
+                    {
+                        katet2 = ac;
+                    }
+                }
+
+                if (bc != hypotinuse)
+                {
+                    katet2 = bc;
+                }
+
+                if ((katet1 * katet2) / 2 == square)
                 {
                     Console.WriteLine("This triangle is rectangular");
                 }
-
-                else //Vypíše, že trojúhelník není pravoúhlý
+                else
                 {
-                    Console.WriteLine("This triangle is not rectangular")
+                    Console.WriteLine("This triangle is not rectangular");
                 }
-
             }
             else
             {
                 Console.WriteLine("Triangle doesn't exist");
             }
+
             Console.ReadLine();
         }
     }
