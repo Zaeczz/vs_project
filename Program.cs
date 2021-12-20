@@ -27,11 +27,11 @@ namespace Test
             Console.Write($"Enter x for point of triangle A: ");
             string temp1 = Console.ReadLine();
             bool isParsable = double.TryParse(temp1, out number);
-            if (isParsable)
-            {
+            if (isParsable) 
+            {  
                 x1 = double.Parse(temp1);
-            }
-            else
+            }            
+            else 
             {
                 Console.WriteLine("Please enter the correct number");
                 Main();
@@ -40,11 +40,11 @@ namespace Test
             Console.Write($"Enter y for point of triangle A: ");
             string temp2 = Console.ReadLine();
             isParsable = double.TryParse(temp2, out number);
-            if (isParsable)
-            {
-                y1 = double.Parse(temp2);
+            if (isParsable) 
+            { 
+                y1 = double.Parse(temp2); 
             }
-            else
+            else 
             {
                 Console.WriteLine("Please enter the correct number");
                 Main();
@@ -52,35 +52,35 @@ namespace Test
 
             Console.Write($"Enter x for point of triangle B: ");
             string temp3 = Console.ReadLine();
-            isParsable = double.TryParse(temp3, out number);
+             isParsable = double.TryParse(temp3, out number);
             if (isParsable)
-            {
+            {  
                 x2 = double.Parse(temp3);
             }
             else
-            {
+            { 
                 Console.WriteLine("Please enter the correct number");
-                Main();
+                Main(); 
             }
 
             Console.Write($"Enter y for point of triangle B: ");
             string temp4 = Console.ReadLine();
             isParsable = double.TryParse(temp4, out number);
             if (isParsable)
-            {
-                y2 = double.Parse(temp4);
+            { 
+                y2 = double.Parse(temp4); 
             }
-            else
-            {
+            else 
+            { 
                 Console.WriteLine("Please enter the correct number");
                 Main();
             }
 
             Console.Write($"Enter x for point of triangle C: ");
             string temp5 = Console.ReadLine();
-            isParsable = double.TryParse(temp5, out number);
+             isParsable = double.TryParse(temp5, out number);
             if (isParsable)
-            {
+            {  
                 y3 = double.Parse(temp5);
             }
             else
@@ -91,10 +91,10 @@ namespace Test
 
             Console.Write($"Enter y for point of triangle C: ");
             string temp6 = Console.ReadLine();
-            isParsable = double.TryParse(temp6, out number);
+             isParsable = double.TryParse(temp6, out number);
             if (isParsable)
             {
-                y3 = double.Parse(temp6);
+                y3 = double.Parse(temp6); 
             }
             else
             {
@@ -110,7 +110,7 @@ namespace Test
             double bc = Math.Sqrt(((x2 - x3) * (x2 - x3)) + ((y2 - y3) * (y2 - y3)));
 
             // Zavádí dvě proměnné, které budou použity v dalších výpočtech 
-            double square;
+            double square;            
             double perimetr;
 
             if (ab + ac > bc && ac + bc > ab && bc + ab > ac)
@@ -151,16 +151,16 @@ namespace Test
                 // Určuje pravoúhlý trojúhelník nebo ne
                 double katet1 = 0;
                 double katet2 = 0;
-                if (ab != hypotinuse)
-                {
-                    katet1 = ab;
+                if (ab != hypotinuse) 
+                { 
+                    katet1 = ab; 
                 }
 
                 if (ac != hypotinuse)
                 {
-                    if (katet1 == 0)
+                    if (katet1 == 0) 
                     {
-                        katet1 = ac;
+                        katet1 = ac; 
                     }
                     else
                     {
@@ -168,15 +168,15 @@ namespace Test
                     }
                 }
 
-                if (bc != hypotinuse)
-                {
-                    katet2 = bc;
+                if (bc != hypotinuse) 
+                { 
+                    katet2 = bc; 
                 }
 
                 if ((katet1 * katet2) / 2 == square)
                 {
                     Console.WriteLine("This triangle is rectangular");
-                }
+                }                
                 else
                 {
                     Console.WriteLine("This triangle is not rectangular");
